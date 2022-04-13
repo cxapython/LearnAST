@@ -2,7 +2,7 @@
 AST学习笔记
 
 常见语法节点
-
+```
 Identifier  ==>  标识符
 Programs  ==>  根节点
 Functions  ==>  函数节点
@@ -29,3 +29,4 @@ Expressions  ==>  表达式节点
     ├── AssignmentExpression  ==>  赋值表达式，如：a = window;
     ├── ConditionalExpression  ==>  三元运算表达式，如：1 > 2 ? 1 : 2;
     └── CallExpression  ==>  调用表达式，如：alert(1);
+```
