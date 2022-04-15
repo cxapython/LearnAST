@@ -8,7 +8,31 @@ const jscode = fs.readFileSync("./extra/useTraverseExtDemo.js", {
 });
 
 let ast = parser.parse(jscode)
-//2.path中的方法
+//path中的方法
+const ReturnVisitor = {
+    ReturnStatement(path) {
+        const operator = path.container?.[0].argument?.operator
+        if (operator === "*") {
+            // path.replaceWithMultiple([
+            //     t.expressionStatement(t.valueToNode('replaceWithMultiple!')),
+            //     t.returnStatement(),
+            // ])
+            path.replaceInline([
+                t.expressionStatement(t.valueToNode('replaceWithMultiple!')),
+                t.returnStatement(),
+            ])
+        }
+        path.stop() // 在ReturnStatement替换的节点还有return语句，为了防止死循环需要加这句。
+
+    }
+}
+
+const binaryFunctionVisitor = {
+    BinaryExpression(path) {
+        //replaceWithSourceString用字符串来替换节点
+        path.replaceWithSourceString("123")
+    }
+}
 const visitor = {
     // 此二项表达式为a+b
     BinaryExpression(path) {
@@ -18,18 +42,20 @@ const visitor = {
             //这里将原来的a+b变成"10086
             //path.replaceWith(t.stringLiteral("10086"))
             //也可以使用valueToNode可以将字符串转换为节点
-            path.replaceWith(t.valueToNode("10086"))
+            // path.replaceWith(t.valueToNode("10086"))
+            path.replaceInline(t.valueToNode("10086"))
+
         }
-    }, ReturnStatement(path) {
-        const operator=path.container?.[0].argument?.operator
-        if (operator === "*") {
-            path.replaceWithMultiple([
-                t.expressionStatement(t.valueToNode('replaceWithMultiple!')),
-                t.returnStatement(),
-            ])
-            path.stop()
+    }
+    , ObjectProperty(path) {
+        path.traverse(ReturnVisitor)
+        if (path.node.key.value == "retval") {
+            path.traverse(binaryFunctionVisitor)
         }
 
+    },ConditionalExpression(path) {
+        //删除某个节点,这里是删除开头的三元表达式
+        path.remove()
     }
 };
 traverse(ast, visitor)

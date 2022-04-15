@@ -1,3 +1,4 @@
+1?2:3
 let obj={
     "name":"cxa",
     "add":function (a,b){
