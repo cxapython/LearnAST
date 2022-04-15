@@ -1,7 +1,7 @@
 # LearnAST
 AST学习笔记
 
-常见语法节点
+### 常见语法节点
 ```
 Identifier  ==>  标识符
 Programs  ==>  根节点
@@ -31,11 +31,16 @@ Expressions  ==>  表达式节点
     └── CallExpression  ==>  调用表达式，如：alert(1);
 ```
 
-babel库相关
+### babel库相关
 ```
 @babel/parser ：将 JS 代码解析成对应的 AST
 @babel/traverse：对 AST 节点进行递归遍历
 @babel/types：集成了一些快速生成、修改、删除 AST Node的方法
 @babel/generator ：根据修改过后的 AST 生成新的 js 代码
 
+```
+
+### 节点属性和方法
+```
+![](节点属性及方法.png)
 ```
