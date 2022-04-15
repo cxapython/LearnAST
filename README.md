@@ -30,3 +30,12 @@ Expressions  ==>  表达式节点
     ├── ConditionalExpression  ==>  三元运算表达式，如：1 > 2 ? 1 : 2;
     └── CallExpression  ==>  调用表达式，如：alert(1);
 ```
+
+babel库相关
+```
+@babel/parser ：将 JS 代码解析成对应的 AST
+@babel/traverse：对 AST 节点进行递归遍历
+@babel/types：集成了一些快速生成、修改、删除 AST Node的方法
+@babel/generator ：根据修改过后的 AST 生成新的 js 代码
+
+```
