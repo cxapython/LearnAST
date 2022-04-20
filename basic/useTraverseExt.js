@@ -3,7 +3,7 @@ const parser = require("@babel/parser")
 const traverse = require("@babel/traverse").default
 const t = require("@babel/types")
 const generator = require("@babel/generator").default
-const jscode = fs.readFileSync("./extra/useTraverseExtDemo.js", {
+const jscode = fs.readFileSync("./source/useTraverseExtDemo.js", {
     encoding: "utf-8"
 });
 
@@ -32,5 +32,5 @@ const visitor = {
 
 traverse(ast, visitor) //visitor是个自定义的对象，然后给这个对象赋值属性，这里是FunctionDeclaration即函数声明。
 let code = generator(ast).code;
-fs.writeFile("./extra/useTraverseExtDemoNew.js", code, (err) => {
+fs.writeFile("./source/useTraverseExtDemoNew.js", code, (err) => {
 })

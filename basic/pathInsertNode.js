@@ -7,7 +7,7 @@ const traverse = require("@babel/traverse").default
 const t = require("@babel/types")
 const {ConditionalExpression} = require("@babel/traverse/lib/path/inference/inferers");
 const generator = require("@babel/generator").default
-const jscode = fs.readFileSync("./extra/useTraverseExtDemo.js", {
+const jscode = fs.readFileSync("./source/useTraverseExtDemo.js", {
     encoding: "utf-8"
 });
 

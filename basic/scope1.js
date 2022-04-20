@@ -3,7 +3,7 @@ const parser = require("@babel/parser")
 const traverse = require("@babel/traverse").default
 const t = require("@babel/types")
 const generator = require("@babel/generator").default
-const jscode = fs.readFileSync("./extra/scopeDemo.js", {
+const jscode = fs.readFileSync("./source/scopeDemo.js", {
     encoding: "utf-8"
 });
 
@@ -37,9 +37,10 @@ traverse(ast, visitor)
 // Binding中的几个关键属性：
 // Identifier:就是a标识符的node对象
 // path：就是a标识符的path对象
-// kind：这里值为param,代表是一个参数
+// kind：这里值为param,代表是一个参数，其他类型hoisted 提升，var 变量， local 内部
 // referenced:表示当前标识符是否被引用
 // references:表示当前标识符被引用的次数
 // constant：是否是常量
 // scope：作用域
+
 

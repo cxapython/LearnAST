@@ -16,13 +16,13 @@ const visitor =
         //通过get获取container里的属性
         let value = path.get('value');
         console.log(value.node); //输出字符串
-        path.get('extra').remove();
-        //delete path.node.extra;
+        path.get('source').remove();
+        //delete path.node.source;
     }
 
     //     "StringLiteral"({node}){
     //     //通过get获取container里的属性
-    //     node.extra=null;
+    //     node.source=null;
     // }
 }
 traverse(ast, visitor);

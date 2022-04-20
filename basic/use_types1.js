@@ -3,7 +3,7 @@ const parser = require("@babel/parser")
 const traverse = require("@babel/traverse").default
 const t = require("@babel/types")
 const generator = require("@babel/generator").default
-const jscode = fs.readFileSync("./extra/use_types1_Demo.js", {
+const jscode = fs.readFileSync("./source/use_types1_Demo.js", {
     encoding: "utf-8"
 });
 
