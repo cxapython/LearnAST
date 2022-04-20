@@ -14,10 +14,8 @@ const visitor =
 {
     "StringLiteral"(path){
         //通过get获取container里的属性
-         console.log(parent.node.kind) //var let
-        //获取path的子路径,使用 get方法,得到id节点
-        let id = path.get('id');
-        console.log(id.node.name); //a b
+        let value = path.get('value');
+        console.log(value.node); //输出字符串
         path.get('extra').remove();
         //delete path.node.extra;
     }
